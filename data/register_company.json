@@ -1,0 +1,23 @@
+{
+  "userData": {
+    "username": "Firstapitester",
+    "password": "SecureP@ssw0rd!",
+    "email": "firstapitester@gmail.com",
+    "firstName": "First",
+    "lastName": "User",
+    "userType": "admin",
+    "title": "Administrator",
+    "fullName": "First User"
+  },
+  "companyData": {
+    "companyName": "New API Test Company",
+    "companyEmail": "firstapitester@gmail.com",
+    "address": {
+        "street": "123 Main St",
+        "city": "Testtown",
+        "state": "Teststate",
+        "zipcode": "12345",
+        "country": "Test Country"
+    }
+  }
+}

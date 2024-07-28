@@ -1,0 +1,4 @@
+pip==23.3
+pytest==7.4.4
+selenium==4.16.0
+requests==2.31.0
