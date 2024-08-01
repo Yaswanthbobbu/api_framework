@@ -1,8 +1,6 @@
 import os
 from base64 import b64encode
-
 from dotenv import load_dotenv, find_dotenv
-
 load_dotenv(find_dotenv())
 
 

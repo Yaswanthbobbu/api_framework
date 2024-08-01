@@ -5,7 +5,7 @@ from api_framework.services.class_service import RegisterCompany
 company = RegisterCompany()
 
 
-def test_if_new_booking_can_be_created(context, create_data):
+def test_if_new_company_can_be_registered(context, create_data):
     response = company.create_booking(create_data)
     with soft_assertions():
         assert_that(response.status_code).is_equal_to(200)
