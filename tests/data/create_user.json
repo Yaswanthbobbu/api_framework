@@ -1,0 +1,23 @@
+{
+  "userData": {
+    "email": "employee1@gmail.com",
+    "password": "SecureP@ssw0rd!",
+    "userType": "general",
+    "title": "Employee",
+    "fullName": "First Employee",
+    "phoneNumber": "123456789",
+    "isActive": true,
+    "isVerified": true
+  },
+  "companyData": {
+    "companyName": "New Test Company",
+    "companyEmail": "firstuser@testcompany.com",
+    "address": {
+      "street": "123 Main St",
+      "city": "Testtown",
+      "state": "Teststate",
+      "zipcode": "12345",
+      "country": "Test Country"
+    }
+  }
+}
