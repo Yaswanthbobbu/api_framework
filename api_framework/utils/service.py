@@ -2,6 +2,8 @@ from dataclasses import dataclass
 
 import requests
 
+from config.endpoints import BASE_URL
+
 
 @dataclass
 class APIResponse:
@@ -38,18 +40,3 @@ class APIRequest:
             as_dict = {}
         headers = response.headers
         return APIResponse(status_code, text, as_dict, headers)
-
-    # def call_method(method, endpoint, payload, token):
-    #     uri = "https://api.test.productselect.skf.com" + endpoint
-    #     headers = {
-    #         "content-type": "application/json",
-    #         "Authorization": token
-    #     }
-    #     if method == 'GET':
-    #         api_response = requests.request("GET", uri)
-    #         return api_response
-    #
-    #     if method == 'POST' or 'PUT':
-    #         body = payload
-    #         api_response = requests.request(method, uri, data=payload, headers=headers)
-    #         return api_response

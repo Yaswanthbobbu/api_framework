@@ -2,6 +2,8 @@ this is api testing framework
 
 url : https://devapi.iprosuite.com/docs#/
 
+pip install -r requirements.txt
+
 PROJECT STRUCTURE 
 
 api_testing/
