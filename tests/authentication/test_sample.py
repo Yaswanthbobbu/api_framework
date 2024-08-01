@@ -28,7 +28,8 @@ def create_user_payload():
 
 def test_create_user(create_user_payload):
     access_token = get_access_token()
-    headers = {"Authorization": f"Bearer {access_token}", "Content-Type": "application/json"}
+    currUser = access_token.split(';')[4]
+    headers = {"accesstoken": f"{access_token}","currUser":f"{currUser}", "Content-Type": "application/json"}
     response = make_request("POST", CREATE_USER_ENDPOINT, headers=headers, payload=create_user_payload, verify=False)
     if response.status_code == 201:
         logger.info("Creation of new user is Successful")
