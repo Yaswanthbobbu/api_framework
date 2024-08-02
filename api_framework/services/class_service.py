@@ -1,7 +1,7 @@
 import json
 from api_framework.services.base_service import BaseClient
 from config.endpoints import BASE_URL
-from api_framework.utils.service import APIRequest
+from api_framework.utils.service_requests import APIRequest
 
 
 class RegisterCompany(BaseClient):

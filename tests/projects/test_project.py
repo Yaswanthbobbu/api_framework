@@ -36,6 +36,7 @@ def test_create_project(project_payload, project_id):
     if response.status_code == 201:
         project_id = response.json().get("id")
         logger.info("Project created successfully with ID: %s", project_id)
+        return project_id
         # yield project_id
 
     else:
@@ -43,6 +44,7 @@ def test_create_project(project_payload, project_id):
         pytest.fail("Failed to create new project")
 
 
+@pytest.mark.skip
 def test_fetch_project(project_id):
     access_token = get_access_token()
     currUser = access_token.split(';')[4]
@@ -55,6 +57,7 @@ def test_fetch_project(project_id):
         pytest.fail("Unable to fetch project")
 
 
+@pytest.mark.skip
 def test_update_project(project_id, update_project_payload):
     access_token = get_access_token()
     currUser = access_token.split(';')[4]

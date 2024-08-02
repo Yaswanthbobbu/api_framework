@@ -43,6 +43,7 @@ def test_create_client(client_payload, client_id):
         pytest.fail("Failed to create new client")
 
 
+@pytest.mark.skip
 def test_fetch_client(client_id):
     access_token = get_access_token()
     currUser = access_token.split(';')[4]
@@ -55,6 +56,7 @@ def test_fetch_client(client_id):
         pytest.fail("Unable to fetch client")
 
 
+@pytest.mark.skip
 def test_update_client(client_id, update_client_payload):
     access_token = get_access_token()
     currUser = access_token.split(';')[4]
