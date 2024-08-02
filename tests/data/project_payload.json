@@ -1,0 +1,36 @@
+{
+  "client": "Tech Solutions Inc.",
+  "projectNumber": "TSI-2024-001",
+  "projectName": "New Website Development",
+  "projectReference": "NWD-TSI-01",
+  "address": {
+    "line1": "123 Innovation Drive",
+    "line2": "Suite 400",
+    "city": "San Francisco",
+    "country": "USA"
+  },
+  "postcode": "94107",
+  "customFields": [],
+  "projectManagement": [],
+  "contacts": [],
+  "projectBreakdown": {
+    "contractValue": 100000,
+    "additionalValue": 5000,
+    "commission": 2000,
+    "additionalHire": 3000,
+    "contractIncVariations": 105000,
+    "budgetSet": 90000,
+    "profitMargin": 10,
+    "predictedProfit": 9500,
+    "labourCost": 50000,
+    "subContractedCosts": 15000,
+    "transport": 2000,
+    "expenses": 5000,
+    "operationCosts": 8000,
+    "adminCost": 4000,
+    "profit": 9500,
+    "application": 60000,
+    "invoiced": 55000,
+    "outstandingBalance": 5000
+  }
+}

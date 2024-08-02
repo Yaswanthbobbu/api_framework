@@ -1,0 +1,24 @@
+{
+  "clientType": "Corporate",
+  "clientName": "Tech Innovations Inc.",
+  "email": "contact@techinnovations.com",
+  "billingAddress": {
+    "line1": "123 Innovation Drive",
+    "line2": "Suite 456",
+    "city": "Tech City",
+    "country": "Techland"
+  },
+  "postcode": "T1234C",
+  "contactNumber": "+1234567890",
+  "companyNumber": "TIN1234567",
+  "website": "https://techinnovations.com/",
+  "title": "Mr.",
+  "jobTitle": "CEO",
+  "secondaryEmail": "ceo@techinnovations.com",
+  "mobileNumber": "+0987654321",
+  "officeNumber": "+1234567890",
+  "invoiced": 5000,
+  "outstanding": 1200,
+  "paid": 3800,
+  "badDebt": 0
+}

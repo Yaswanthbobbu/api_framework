@@ -1,23 +1,25 @@
 {
-  "userData": {
-    "email": "employee1@gmail.com",
-    "password": "SecureP@ssw0rd!",
-    "userType": "general",
-    "title": "Employee",
-    "fullName": "First Employee",
-    "phoneNumber": "123456789",
-    "isActive": true,
-    "isVerified": true
+  "email": "employee1@gmail.com",
+  "password": "SecureP@ssw0rd!",
+  "userType": "general",
+  "fullName": "First Employee",
+  "phoneNumber": "123456789",
+  "address": {
+    "line1": "Test line",
+    "city": "Test City",
+    "country": "Test country"
   },
+  "postcode": "12345",
+  "isActive": true,
+  "isVerified": true,
   "companyData": {
     "companyName": "New Test Company",
     "companyEmail": "firstuser@testcompany.com",
     "address": {
-      "street": "123 Main St",
-      "city": "Testtown",
-      "state": "Teststate",
-      "zipcode": "12345",
-      "country": "Test Country"
-    }
+    "street": "123 Main St",
+    "city": "Testtown",
+    "state": "Teststate",
+    "zipcode": "12345",
+    "country": "Test Country"}
   }
 }

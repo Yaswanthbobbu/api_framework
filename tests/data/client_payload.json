@@ -1,0 +1,52 @@
+{
+  "clientType": "Corporate",
+  "clientName": "Tech Solutions Inc.",
+  "email": "contact@techsolutions.com",
+  "billingAddress": {
+    "line1": "123 Innovation Drive",
+    "line2": "Suite 400",
+    "city": "San Francisco",
+    "country": "USA"
+  },
+  "postcode": "94107",
+  "clientTeam": [
+    {
+      "title": "Mr.",
+      "fullName": "John Doe",
+      "jobTitle": "Project Manager",
+      "email": "johndoe@techsolutions.com",
+      "mobileNumber": "+1-555-555-5555",
+      "hasClientHubAccess": true,
+      "permissionCosting": true,
+      "permissionProjects": true,
+      "permissionSchedule": true,
+      "permissionEstimates": true,
+      "permissionApplications": true,
+      "permissionRequests": true,
+      "permissionDocumentation": true
+    },
+    {
+      "title": "Ms.",
+      "fullName": "Jane Smith",
+      "jobTitle": "Finance Manager",
+      "email": "janesmith@techsolutions.com",
+      "mobileNumber": "+1-555-555-5556",
+      "hasClientHubAccess": false,
+      "permissionCosting": false,
+      "permissionProjects": false,
+      "permissionSchedule": false,
+      "permissionEstimates": true,
+      "permissionApplications": true,
+      "permissionRequests": false,
+      "permissionDocumentation": true
+    }
+  ],
+  "contactNumber": "+1-555-555-5557",
+  "companyNumber": "TSI123456",
+  "website": "http://www.techsolutions.com",
+  "title": "CEO",
+  "jobTitle": "Chief Executive Officer",
+  "secondaryEmail": "secondary@techsolutions.com",
+  "mobileNumber": "+1-555-555-5558",
+  "officeNumber": "+1-555-555-5559"
+}

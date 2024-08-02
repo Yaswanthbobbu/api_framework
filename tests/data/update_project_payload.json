@@ -1,0 +1,74 @@
+{
+  "projectNumber": "TSI-2024-001",
+  "projectName": "New Website Development - Phase 2",
+  "projectReference": "NWD-TSI-01-P2",
+  "address": {
+    "line1": "123 Innovation Drive",
+    "line2": "Suite 400",
+    "city": "San Francisco",
+    "country": "USA"
+  },
+  "postcode": "94107",
+  "customFields": [
+    {
+      "fieldType": "text",
+      "fieldName": "Project Lead",
+      "defaultValue": "John Doe",
+      "actualValue": "John Doe",
+      "option1": "",
+      "option2": "",
+      "option3": "",
+      "option4": "",
+      "option5": "",
+      "option6": "",
+      "option7": "",
+      "option8": "",
+      "option9": "",
+      "option10": ""
+    },
+    {
+      "fieldType": "date",
+      "fieldName": "Start Date",
+      "defaultValue": "2024-08-01",
+      "actualValue": "2024-08-01",
+      "option1": "",
+      "option2": "",
+      "option3": "",
+      "option4": "",
+      "option5": "",
+      "option6": "",
+      "option7": "",
+      "option8": "",
+      "option9": "",
+      "option10": ""
+    }
+  ],
+  "projectManagement": [
+    "Jane Smith",
+    "John Doe"
+  ],
+  "contacts": [
+    "johndoe@techsolutions.com",
+    "janesmith@techsolutions.com"
+  ],
+  "projectBreakdown": {
+    "contractValue": 120000,
+    "additionalValue": 10000,
+    "commission": 2500,
+    "additionalHire": 4000,
+    "contractIncVariations": 130000,
+    "budgetSet": 100000,
+    "profitMargin": 12,
+    "predictedProfit": 14000,
+    "labourCost": 60000,
+    "subContractedCosts": 18000,
+    "transport": 3000,
+    "expenses": 6000,
+    "operationCosts": 9000,
+    "adminCost": 5000,
+    "profit": 14000,
+    "application": 70000,
+    "invoiced": 65000,
+    "outstandingBalance": 5000
+  }
+}
