@@ -21,24 +21,31 @@ def setup_logger():
         level=logging.INFO,
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         handlers=[
-            logging.FileHandler(os.path.join(log_folder, "api_testing.log")),
             logging.StreamHandler(),
+            logging.FileHandler(os.path.join(log_folder, "api_testing.log")),
         ],
     )
-
     logger = logging.getLogger("api_testing")
     return logger
 
 
 @pytest.fixture(scope="session")
 def get_logger(setup_logger):
-    log_file = f"api_testing.log"
+    log_file_path = f"api_testing.log"
     logger = setup_logger
-    handler = logging.FileHandler(os.path.join("logs", log_file))
+    handler = logging.FileHandler(os.path.join("logs", log_file_path))
     formatter = logging.Formatter(f'%(name)s - %(levelname)s - %(message)s - {datetime.now().strftime("%d/%m %H:%M")}')
     handler.setFormatter(formatter)
     logger.addHandler(handler)
+    # read_latest_logs(log_file_path)
     return logger
+
+
+def read_latest_logs(log_file_path):
+    with open(log_file_path, 'r') as log_file:
+        lines = log_file.readlines()
+        for line in reversed(lines):
+            print(line.strip())
 
 
 @pytest.fixture(scope="session")
@@ -74,3 +81,18 @@ def create_project():
 @pytest.fixture(scope="session")
 def update_project():
     yield read_file("update_project.json")
+
+
+@pytest.fixture(scope="session")
+def change_password():
+    yield read_file("change_password.json")
+
+
+@pytest.fixture(scope="session")
+def change_email():
+    yield read_file("change_email.json")
+
+
+@pytest.fixture(scope="session")
+def user_id():
+    yield read_file("email.json")
