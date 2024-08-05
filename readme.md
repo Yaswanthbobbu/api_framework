@@ -1,7 +1,6 @@
 api-framework-python/
-├─ library/
-│  ├─ file_reader.py 
-│  ├─ service_requests.py
+
+├─ logs/
 ├─ services/
 │  ├─ base_service.py
 │  ├─ client_service.py
@@ -13,7 +12,11 @@ api-framework-python/
 │  │  ├─ update_client.json
 │  │  ├─ .....
 │  ├─ test_clients.py
+│  ├─ test_projects.py
 │  ├─ test_register_company.py
+├─ utils/
+│  ├─ file_reader.py 
+│  ├─ service_requests.py
 ├─ .env
 ├─ .gitignore
 ├─ config.py
