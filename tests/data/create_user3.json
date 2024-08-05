@@ -1,9 +1,9 @@
 {
-  "email": "muni.chittem@gmail.com",
+  "email": "thirdapitester@gmail.com",
   "password": "Admin1234!",
   "userType": "general",
   "title": "Mr",
-  "fullName": "munibabu",
+  "fullName": "Thirdapitester",
   "permissions": {
     "accessSchedule": false,
     "editOwnSchedule": false,
@@ -138,7 +138,7 @@
   "shares": "1",
   "dividends": "1",
   "isActive": true,
-  "isVerified": false,
+  "isVerified": true,
   "comments": [
     "Test",
     "Test"

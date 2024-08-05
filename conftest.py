@@ -38,12 +38,10 @@ def setup_logger():
     logger = logging.getLogger("API_Testing")
     logger.setLevel(logging.INFO)
 
-    # Remove any existing handlers / to avoid duplicates
-    if logger.hasHandlers():
+    if logger.hasHandlers():  # Remove existing handlers and avoid duplicates
         logger.handlers.clear()
 
-    # terminal output
-    stream_handler = logging.StreamHandler()
+    stream_handler = logging.StreamHandler()   # terminal output
     stream_handler.setLevel(logging.INFO)
 
     # FileHandler for log file
@@ -54,7 +52,7 @@ def setup_logger():
     stream_handler.setFormatter(formatter)
     file_handler.setFormatter(formatter)
 
-    logger.addHandler(stream_handler)
+    # logger.addHandler(stream_handler)  to print on terminal
     logger.addHandler(file_handler)
 
     for handler in logger.handlers:
@@ -80,7 +78,7 @@ def company_payload():
 
 @pytest.fixture(scope="session")
 def create_user_payload():
-    yield read_file("create_user.json")
+    yield read_file("create_user4.json")
 
 
 @pytest.fixture(scope="session")
