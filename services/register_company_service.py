@@ -7,17 +7,22 @@ from utils.service_requests import APIRequest
 
 
 class RegisterCompany(BaseClient):
+    # def __init__(self):
+    #     super().__init__()
+    #     self.base_url = base_url
+    #     self.request = APIRequest()
+
     def register_company(self, company_payload):
         url = base_url + register_company_endpoint
         return requests.post(
-            url, json.dumps(company_payload), self.headers)
+            url, json.dumps(company_payload), self.headers, verify=False)
 
     def user_login(self):
         url = base_url + login_endpoint
         login_payload = {
             "email": EMAIL,
             "password": PASSWORD}
-        return requests.post(url, json=login_payload, verify=False)
+        return requests.post(url, json.dumps(login_payload), self.headers, verify=False)
 
     def verify_user(self, payload):
         url = base_url + verify_user_endpoint
@@ -27,14 +32,12 @@ class RegisterCompany(BaseClient):
     def create_user(self, create_user_payload):
         url = base_url + create_user_endpoint
         print(self.headers_with_token)
-        response = requests.post(
-            url, json.dumps(create_user_payload), self.headers_with_token, verify=False)
         return requests.post(
             url, json.dumps(create_user_payload), self.headers_with_token, verify=False)
 
     def change_user_password(self, user_id, payload):
         url = f"{base_url + change_user_password_endpoint}/{user_id}"
-        return requests.patch(url, json.dumps(payload))
+        return self.request.patch_request(url, json.dumps(payload))
 
     def change_user_email(self, user_id, payload):
         url = f"{base_url + change_user_email_endpoint}/{user_id}"
