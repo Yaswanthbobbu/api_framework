@@ -40,6 +40,7 @@ def get_logger(setup_logger):
     logger.addHandler(handler)
     return logger
 
+
 @pytest.fixture(scope="session")
 def login_payload():
     yield read_file("user_login.json")

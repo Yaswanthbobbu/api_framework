@@ -3,4 +3,5 @@ pytest==8.3.2
 requests==2.32.3
 colorama~=0.4.6
 assertpy~=1.1
+python-dotenv==1.0.1
 setuptools == 72.1.0

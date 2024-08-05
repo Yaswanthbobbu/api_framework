@@ -86,3 +86,52 @@ api_testing - INFO - Test: User login starts - 05/08 10:08
 api_testing - INFO - User login test passed - 05/08 10:08
 api_testing - INFO - Test: Create user starts - 05/08 10:08
 api_testing - ERROR - Admin create user test failed - 05/08 10:08
+api_testing - INFO - Test: User login starts - 05/08 10:26
+api_testing - INFO - User login test passed - 05/08 10:26
+api_testing - INFO - Test: Create user starts - 05/08 10:26
+api_testing - ERROR - Admin create user test failed - 05/08 10:26
+api_testing - INFO - Test: User login starts - 05/08 10:29
+api_testing - INFO - User login test passed - 05/08 10:29
+api_testing - INFO - Test: Create user starts - 05/08 10:29
+api_testing - ERROR - Admin create user test failed - 05/08 10:29
+api_testing - INFO - Test: User login starts - 05/08 10:31
+api_testing - INFO - User login test passed - 05/08 10:31
+api_testing - INFO - Test: Create user starts - 05/08 10:31
+api_testing - ERROR - Admin create user test failed - 05/08 10:31
+api_testing - INFO - Test: User login starts - 05/08 10:32
+api_testing - INFO - User login test passed - 05/08 10:32
+api_testing - INFO - Test: Create user starts - 05/08 10:32
+api_testing - ERROR - Admin create user test failed - 05/08 10:32
+api_testing - INFO - Test: User login starts - 05/08 10:33
+api_testing - INFO - User login test passed - 05/08 10:33
+api_testing - INFO - Test: Create user starts - 05/08 10:33
+api_testing - INFO - Test: User login starts - 05/08 10:34
+api_testing - INFO - User login test passed - 05/08 10:34
+api_testing - INFO - Test: Create user starts - 05/08 10:34
+api_testing - INFO - Test: User login starts - 05/08 10:35
+api_testing - INFO - User login test passed - 05/08 10:35
+api_testing - INFO - Test: Create user starts - 05/08 10:35
+api_testing - ERROR - Admin create user test failed - 05/08 10:35
+api_testing - INFO - Test: User login starts - 05/08 10:46
+api_testing - INFO - User login test passed - 05/08 10:46
+api_testing - INFO - Test: Create user starts - 05/08 10:46
+api_testing - ERROR - Admin create user test failed - 05/08 10:46
+api_testing - INFO - Test: User login starts - 05/08 10:46
+api_testing - INFO - User login test passed - 05/08 10:46
+api_testing - INFO - Test: Create user starts - 05/08 10:46
+api_testing - ERROR - Admin create user test failed - 05/08 10:46
+api_testing - INFO - Test: User login starts - 05/08 10:51
+api_testing - INFO - User login test passed - 05/08 10:51
+api_testing - INFO - Test: Create user starts - 05/08 10:51
+api_testing - ERROR - Admin create user test failed - 05/08 10:51
+api_testing - INFO - Test: User login starts - 05/08 10:56
+api_testing - INFO - Test: User login starts - 05/08 10:57
+api_testing - INFO - Test: User login starts - 05/08 10:58
+api_testing - INFO - Test: User login starts - 05/08 10:58
+api_testing - INFO - User login test passed - 05/08 10:58
+api_testing - INFO - Test: Create user starts - 05/08 10:58
+api_testing - ERROR - Admin create user test failed - 05/08 10:58
+api_testing - INFO - Test: User login starts - 05/08 11:01
+api_testing - INFO - User login test passed - 05/08 11:01
+api_testing - INFO - Test: Create user starts - 05/08 11:01
+api_testing - ERROR - Admin create user test failed - 05/08 11:01
