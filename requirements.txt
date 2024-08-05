@@ -1,6 +1,5 @@
 pip==24.1.2
 pytest==8.3.2
+selenium==4.23.1
 requests==2.32.3
 colorama~=0.4.6
-assertpy~=1.1
-setuptools == 72.1.0
