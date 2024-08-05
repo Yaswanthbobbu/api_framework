@@ -1,15 +1,12 @@
-from dataclasses import dataclass
-
 import requests
-
-from config.endpoints import BASE_URL
+from dataclasses import dataclass
 
 
 @dataclass
 class APIResponse:
     status_code: int
     text: str
-    as_dict: dict
+    content: dict
     headers: dict
 
 
@@ -26,6 +23,10 @@ class APIRequest:
         response = requests.put(url=url, json=payload, headers=headers, verify=False)
         return self.__get_responses(response)
 
+    def patch_request(self, url, payload, headers):
+        response = requests.patch(url=url, json=payload, headers=headers, verify=False)
+        return self.__get_responses(response)
+
     def delete_request(self, url, headers):
         response = requests.delete(url=url, headers=headers, verify=False)
         return self.__get_responses(response)
@@ -40,3 +41,6 @@ class APIRequest:
             as_dict = {}
         headers = response.headers
         return APIResponse(status_code, text, as_dict, headers)
+
+
+

@@ -6,8 +6,8 @@ BASE_PATH = Path.cwd() / "data"
 
 def read_file(file_name: str) -> dict:
     file_path = get_file_with_json_ext(file_name)
-    with open(file_path, mode="r", encoding="utf-8") as f:
-        return json.load(f)
+    with open(file_path, mode="r") as file:
+        return json.load(file)
 
 
 def get_file_with_json_ext(file_name: str) -> Path:

@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pip      = "24.1.2"
+pytest   = "8.3.2"
+requests = "2.32.3"
+assertpy =  "1.1"
+pipenv   =  "2024.0.1"
+
+
+[requires]
+python_version = "3.12"
+pywinusb = { version = "*", os_name = "== 'windows'" }
+
