@@ -44,8 +44,7 @@ def setup_logger():
     stream_handler = logging.StreamHandler()   # terminal output
     stream_handler.setLevel(logging.INFO)
 
-    # FileHandler for log file
-    file_handler = logging.FileHandler(log_file, mode='a')
+    file_handler = logging.FileHandler(log_file, mode='a')   # FileHandler for log file
     file_handler.setLevel(logging.INFO)
 
     formatter = logging.Formatter(f'%(name)s - %(levelname)s - %(message)s - {datetime.now().strftime("%d/%m %H:%M:%S")}')

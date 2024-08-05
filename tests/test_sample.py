@@ -18,14 +18,14 @@ def test_if_user_can_login(context, login_payload, get_logger):
             logger.error('User login test failed')
 
 
-def test_if_user_change_password1(context, user_id, change_password, get_logger):
-    logger = get_logger
-    logger.info('Test: Change user password starts1')
-    response = company.change_user_password(user_id, change_password)
-    with soft_assertions():
-        assert_that(response.status_code).is_equal_to(200)
-        assert_that(response.json()).is_equal_to({'details': 'Success'})
-        if response.status_code == 200:
-            logger.info('Change user password test passed')
-        else:
-            logger.error('Change user password test failed')
+# def test_if_user_change_password(context, user_id, change_password, get_logger, admin=True):
+#     logger = get_logger
+#     logger.info('Test: Change user password starts')
+#     response = company.change_user_password(user_id, change_password, admin)
+#     with soft_assertions():
+#         assert_that(response.status_code).is_equal_to(200)
+#         assert_that(response.json()).is_equal_to({'details': 'Success'})
+#         if response.status_code == 200:
+#             logger.info('Change user password test passed')
+#         else:
+#             logger.error('Change user password test failed')

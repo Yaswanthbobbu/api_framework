@@ -34,12 +34,14 @@ class RegisterCompany(BaseClient):
         return requests.post(
             url, json.dumps(create_user_payload), headers=headers, verify=False)
 
-    def change_user_password(self, user_id: None, change_password):
+    def change_user_password(self, user_id: None, change_password, admin: bool):
         if user_id:
             url = f"{base_url + change_user_password_endpoint}/{user_id}"
         else:
             url = f"{base_url + change_user_password_endpoint}"
         headers = self.headers_with_token
+        payload = change_password
+        payload['admin'] = admin
         return requests.patch(url, json.dumps(change_password), headers=headers, verify=False)
 
     def change_user_email(self, user_id: None, change_email):
