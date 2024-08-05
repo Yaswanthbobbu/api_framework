@@ -37,7 +37,7 @@ def test_create_user(create_user_payload):
         logger.info("Request Headers: %s", headers)
         logger.info("Request Payload: %s", create_user_payload)
         logger.info("Response Status Code: %s", response.status_code)
-        logger.info("Response Content: %s", response.conte)
+        logger.info("Response Content: %s", response.content)
         # logger.info("Response Content: %s", response.json())
         if response.status_code == 201:
             logger.info("Creation of new user is Successful")
