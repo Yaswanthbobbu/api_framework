@@ -12,40 +12,60 @@ def context():
     return {}
 
 
+# class ReverseFileHandler(logging.FileHandler):
+#     def emit(self, record):
+#         log_entry = self.format(record)
+#         log_file_path = self.baseFilename
+#
+#         # read contents of log file
+#         if os.path.exists(log_file_path):
+#             with open(log_file_path, 'r') as f:
+#                 existing_content = f.read()
+#         else:
+#             existing_content = ""
+#
+#         # new log entry + existing content
+#         with open(log_file_path, 'w') as f:
+#             f.write(log_entry + '\n' + existing_content)
+
+
 @pytest.fixture(scope="session")
 def setup_logger():
-    log_folder = r"./logs"
+    log_folder = os.path.abspath("../logs")
     os.makedirs(log_folder, exist_ok=True)
+    log_file = os.path.join(log_folder, "api_testing.log")
 
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-        handlers=[
-            logging.StreamHandler(),
-            logging.FileHandler(os.path.join(log_folder, "api_testing.log")),
-        ],
-    )
-    logger = logging.getLogger("api_testing")
+    logger = logging.getLogger("API_Testing")
+    logger.setLevel(logging.INFO)
+
+    # Remove any existing handlers / to avoid duplicates
+    if logger.hasHandlers():
+        logger.handlers.clear()
+
+    # terminal output
+    stream_handler = logging.StreamHandler()
+    stream_handler.setLevel(logging.INFO)
+
+    # FileHandler for log file
+    file_handler = logging.FileHandler(log_file, mode='a')
+    file_handler.setLevel(logging.INFO)
+
+    formatter = logging.Formatter(f'%(name)s - %(levelname)s - %(message)s - {datetime.now().strftime("%d/%m %H:%M:%S")}')
+    stream_handler.setFormatter(formatter)
+    file_handler.setFormatter(formatter)
+
+    logger.addHandler(stream_handler)
+    logger.addHandler(file_handler)
+
+    for handler in logger.handlers:
+        print(f"Handler: {handler}")
+
     return logger
 
 
 @pytest.fixture(scope="session")
 def get_logger(setup_logger):
-    log_file_path = f"api_testing.log"
-    logger = setup_logger
-    handler = logging.FileHandler(os.path.join("logs", log_file_path))
-    formatter = logging.Formatter(f'%(name)s - %(levelname)s - %(message)s - {datetime.now().strftime("%d/%m %H:%M")}')
-    handler.setFormatter(formatter)
-    logger.addHandler(handler)
-    # read_latest_logs(log_file_path)
-    return logger
-
-
-def read_latest_logs(log_file_path):
-    with open(log_file_path, 'r') as log_file:
-        lines = log_file.readlines()
-        for line in reversed(lines):
-            print(line.strip())
+    return setup_logger
 
 
 @pytest.fixture(scope="session")
