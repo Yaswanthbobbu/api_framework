@@ -77,7 +77,7 @@ def company_payload():
 
 @pytest.fixture(scope="session")
 def create_user_payload():
-    yield read_file("create_user4.json")
+    yield read_file("create_user.json")
 
 
 @pytest.fixture(scope="session")
@@ -87,7 +87,7 @@ def create_client():
 
 @pytest.fixture(scope="session")
 def update_client():
-    yield read_file("udpate_client.json")
+    yield read_file("update_client.json")
 
 
 @pytest.fixture(scope="session")

@@ -5,6 +5,7 @@ from services.register_company_service import RegisterCompany
 company = RegisterCompany()
 
 
+@pytest.mark.skip(reason='only be created at once')
 def test_if_new_company_can_be_registered(context, company_payload, get_logger):
     logger = get_logger
     logger.info('Test: Register company starts')

@@ -1,4 +1,3 @@
-import email
 import json
 import requests
 from config import *
@@ -30,44 +29,49 @@ class RegisterCompany(BaseClient):
 
     def create_user(self, create_user_payload):
         url = base_url + create_user_endpoint
-        headers = self.headers_with_token
+        headers = self.headers_with_token()
         return requests.post(
             url, json.dumps(create_user_payload), headers=headers, verify=False)
 
-    def change_user_password(self, user_id: None, change_password, admin: bool):
-        if user_id:
+    def change_user_password(self, change_password, admin: bool, user_id: str = None):
+        if admin:
             url = f"{base_url + change_user_password_endpoint}/{user_id}"
         else:
             url = f"{base_url + change_user_password_endpoint}"
-        headers = self.headers_with_token
+        headers = self.headers_with_token()
         payload = change_password
         payload['admin'] = admin
-        return requests.patch(url, json.dumps(change_password), headers=headers, verify=False)
+        response = requests.patch(url, json.dumps(payload), headers=headers, verify=False)
+        try:
+            response_json = response.json()
+        except requests.exceptions.JSONDecodeError:
+            response_json = {"error": "Invalid JSON response", "text": response.text}
+        return response, response_json
 
     def change_user_email(self, user_id: None, change_email):
         if user_id:
             url = f"{base_url + change_user_email_endpoint}/{user_id}"
         else:
             url = f"{base_url + change_user_email_endpoint}"
-        headers = self.headers_with_token
+        headers = self.headers_with_token()
         return requests.patch(url, json.dumps(change_email), headers=headers, verify=False)
 
     def refresh_access_token(self):
         url = base_url + refresh_access_token_endpoint
-        headers = self.headers_with_token
+        headers = self.headers_with_token()
         return requests.post(url, json.dumps({}), headers=headers, verify=False)
 
     def user_logout(self):
         url = base_url + logout_endpoint
-        headers = self.headers_with_token
+        headers = self.headers_with_token()
         return requests.post(url, json.dumps({}), headers=headers, verify=False)
 
     def force_logout(self, user_id):
         url = f"{base_url + force_logout_endpoint}/{user_id}"
-        headers = self.headers_with_token
+        headers = self.headers_with_token()
         return requests.post(url, json.dumps({}), headers=headers, verify=False)
 
     def delete_user(self, user_id):
         url = f"{base_url + delete_user_endpoint}/{user_id}"
-        headers = self.headers_with_token
+        headers = self.headers_with_token()
         return requests.delete(url, headers=headers, verify=False)

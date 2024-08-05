@@ -1,22 +1,22 @@
 {
   "userData": {
-    "username": "Firstapitester",
+    "username": "AdminApiTestUser",
     "password": "SecureP@ssw0rd!",
-    "email": "firstapitester@gmail.com",
-    "firstName": "First",
-    "lastName": "User",
-    "userType": "admin",
+    "email": "adminapitestuser@gmail.com",
+    "firstName": "Admin",
+    "lastName": "API",
+    "userType": "Admin",
     "title": "Administrator",
-    "fullName": "First User"
+    "fullName": "Admin User"
   },
   "companyData": {
-    "companyName": "New API Test Company",
-    "companyEmail": "firstapitester@gmail.com",
+    "companyName": "API E2E Testing Company",
+    "companyEmail": "adminapitestuser@gmail.com",
     "address": {
         "street": "123 Main St",
-        "city": "Testtown",
-        "state": "Teststate",
-        "zipcode": "12345",
+        "city": "Test_town",
+        "state": "Test_state",
+        "zipcode": "Test345",
         "country": "Test Country"
     }
   }
