@@ -60,32 +60,60 @@ def test_if_admin_can_create_user(context, create_user_payload, get_logger):
             logger.error('Admin create user test failed')
 
 
-def test_if_admin_can_change_user_password(context, change_password_payload):
-    response = company.change_user_password(context.get("user_id"), change_password_payload)
+def test_if_admin_can_change_user_password(context, user_id,change_password, get_logger):
+    logger = get_logger
+    logger.info('Test: Admin Changes user password starts')
+    response = company.change_user_password(user_id, change_password)
     with soft_assertions():
-        assert_that(response.status_code).is_equal_to(201)
-        assert_that(response.as_dict).is_empty()
+        assert_that(response.status_code).is_equal_to(200)
+        assert_that(response.json()).is_equal_to({'details': 'Success'})
+        logger.info(response.json())
+        if response.status_code == 200:
+            logger.info('Admin Changes user password test passed')
+        else:
+            logger.error('Admin Changes user password test failed')
 
 
-def test_if_user_change_password(context, change_email_payload):
-    response = company.change_user_password(context, change_email_payload)
+def test_if_user_change_password(context, change_password, get_logger):
+    logger = get_logger
+    logger.info('Test: Change user password starts')
+    response = company.change_user_password(change_password)
     with soft_assertions():
-        assert_that(response.status_code).is_equal_to(201)
-        assert_that(response.as_dict).is_empty()
+        assert_that(response.status_code).is_equal_to(200)
+        assert_that(response.json()).is_equal_to({'details': 'Success'})
+        logger.info(response.json())
+        if response.status_code == 200:
+            logger.info('Change user password test passed')
+        else:
+            logger.error('Change user password test failed')
 
 
-def test_if_admin_can_change_user_email(context, change_email_payload):
-    response = company.change_user_email(context.get("user_id"), change_email_payload)
+def test_if_admin_can_change_user_email(context, user_id, change_email, get_logger):
+    logger = get_logger
+    logger.info('Test: Admin Change user Email starts')
+    response = company.change_user_password(user_id, change_email)
     with soft_assertions():
-        assert_that(response.status_code).is_equal_to(201)
-        assert_that(response.as_dict).is_empty()
+        assert_that(response.status_code).is_equal_to(200)
+        assert_that(response.json()).is_equal_to({'details': 'Success'})
+        logger.info(response.json())
+        if response.status_code == 200:
+            logger.info('Admin Change user Email test passed')
+        else:
+            logger.error('Admin Change user Email test failed')
 
 
-def test_if_user_change_email(context, change_email_payload):
-    response = company.change_user_email(context, change_email_payload)
+def test_if_user_change_email(context, change_email, get_logger):
+    logger = get_logger
+    logger.info('Test: Change user Email starts')
+    response = company.change_user_password(change_email)
     with soft_assertions():
-        assert_that(response.status_code).is_equal_to(201)
-        assert_that(response.as_dict).is_empty()
+        assert_that(response.status_code).is_equal_to(200)
+        assert_that(response.json()).is_equal_to({'details': 'Success'})
+        logger.info(response.json())
+        if response.status_code == 200:
+            logger.info('Change user Email test passed')
+        else:
+            logger.error('Change user Email test failed')
 
 
 @pytest.mark.skip(reason='NoRefreshToken error')
