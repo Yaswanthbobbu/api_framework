@@ -19,32 +19,31 @@ def test_if_new_company_can_be_registered(context, company_payload, get_logger):
             logger.error('Registering new company test failed')
 
 
-def test_if_user_can_login(context, login_payload, get_logger):
-    logger = get_logger
-    logger.info('Test: User login starts')
-    response = company.user_login(login_payload)
-    with soft_assertions():
-        assert_that(response.status_code).is_equal_to(200)
-        assert_that(response.json()).is_equal_to({'details': 'Success'})
-        # {'detail': 'Success', 'newID': 'alphanumeric_value'}
-        if response.status_code == 200:
-            logger.info('User login test passed')
-        else:
-            logger.error('User login test failed')
-
-
-@pytest.mark.skip(reason='configure flag')
-def test_user_verification(context, verify_user_payload, get_logger):
+@pytest.mark.skip(reason='configure flag/ manual check')
+def test_user_verification(context, verify_user, get_logger):
     logger = get_logger
     logger.info('Test: User Verification starts')
-    response = company.user_login(verify_user_payload)
+    response = company.verify_user(verify_user)
     with soft_assertions():
         assert_that(response.status_code).is_equal_to(200)
-        assert_that(response.json()).is_equal_to({'details': 'Success'})
+        assert_that(response.json()).is_equal_to({'detail': 'Success'})
         if response.status_code == 200:
             logger.info('User verification test passed')
         else:
             logger.error('User verification test failed')
+
+
+def test_if_admin_can_login(context, admin_payload, get_logger):
+    logger = get_logger
+    logger.info('Test: Admin login starts')
+    response = company.admin_login(admin_payload)
+    with soft_assertions():
+        assert_that(response.status_code).is_equal_to(200)
+        assert_that(response.json()).is_equal_to({'detail': 'Success'})
+        if response.status_code == 200:
+            logger.info('Admin login test passed')
+        else:
+            logger.error('Admin login test failed')
 
 
 def test_if_admin_can_create_user(context, create_user_payload, get_logger):
@@ -54,6 +53,7 @@ def test_if_admin_can_create_user(context, create_user_payload, get_logger):
     with soft_assertions():
         assert_that(response.status_code).is_equal_to(201)
         assert_that(response.json()).is_equal_to({'detail': 'Success'})
+        # {'detail': 'Success', 'newID': 'alphanumeric_value'}
         assert_that(response.content).is_empty()
         if response.status_code == 201:
             logger.info('Admin create user test passed')
@@ -61,7 +61,21 @@ def test_if_admin_can_create_user(context, create_user_payload, get_logger):
             logger.error('Admin create user test failed')
 
 
-def test_if_admin_can_change_user_password(context, user_id,change_password, get_logger):
+def test_if_user_can_login(context, login_payload, get_logger):
+    logger = get_logger
+    logger.info('Test: User login starts')
+    response, response_json = company.user_login(login_payload)
+    with soft_assertions():
+        assert_that(response.status_code).is_equal_to(200)
+        logger.info(response_json)
+        assert_that(response.json()).is_equal_to({'detail': 'Success'})
+        if response.status_code == 200:
+            logger.info('User login test passed')
+        else:
+            logger.error('User login test failed')
+
+
+def test_if_admin_can_change_user_password(context, user_id, change_password, get_logger):
     logger = get_logger
     logger.info('Test: Admin Changes user password starts')
     response = company.change_user_password(user_id, change_password)
@@ -78,7 +92,7 @@ def test_if_admin_can_change_user_password(context, user_id,change_password, get
 def test_if_user_change_password(context, change_password, get_logger):
     logger = get_logger
     logger.info('Test: Change user password starts')
-    response = company.change_user_password(change_password)
+    response, response_json = company.change_user_password(change_password)
     with soft_assertions():
         assert_that(response.status_code).is_equal_to(200)
         assert_that(response.json()).is_equal_to({'details': 'Success'})
@@ -117,14 +131,13 @@ def test_if_user_change_email(context, change_email, get_logger):
             logger.error('Change user Email test failed')
 
 
-@pytest.mark.skip(reason='NoRefreshToken error')
 def test_refresh_access_token(context, get_logger):
     logger = get_logger
     logger.info('Test: Refresh access token starts')
     response = company.refresh_access_token()
     with soft_assertions():
         assert_that(response.status_code).is_equal_to(200)
-        assert_that(response.json()).is_equal_to({'details': 'Success'})
+        assert_that(response.json()).is_equal_to({'detail': 'Success'})
         if response.status_code == 200:
             logger.info('Refresh access token test passed')
         else:

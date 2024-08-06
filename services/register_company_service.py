@@ -18,20 +18,29 @@ class RegisterCompany(BaseClient):
         return requests.post(
             url, json.dumps(company_payload), self.headers, verify=False)
 
-    def user_login(self, login_payload):
-        url = base_url + login_endpoint
-        return requests.post(url, json.dumps(login_payload), self.headers, verify=False)
-
-    def verify_user(self, payload):
+    def verify_user(self, verify_user):
         url = base_url + verify_user_endpoint
         return requests.post(
-            url, json.dumps(payload), self.headers, verify=False)
+            url, json.dumps(verify_user), self.headers, verify=False)
+
+    def admin_login(self, admin_payload):
+        url = base_url + login_endpoint
+        return requests.post(url, json.dumps(admin_payload), self.headers, verify=False)
 
     def create_user(self, create_user_payload):
         url = base_url + create_user_endpoint
         headers = self.headers_with_token()
         return requests.post(
             url, json.dumps(create_user_payload), headers=headers, verify=False)
+
+    def user_login(self, login_payload):
+        url = base_url + login_endpoint
+        try:
+            response = requests.post(url, json.dumps(login_payload), self.headers, verify=False)
+            response_json = response.json()
+        except requests.exceptions.JSONDecodeError:
+            response_json = {"error": "Invalid JSON response", "text": response.text}
+        return response, response_json
 
     def change_user_password(self, change_password, admin: bool, user_id: str = None):
         if admin:

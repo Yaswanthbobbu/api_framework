@@ -41,13 +41,14 @@ def setup_logger():
     if logger.hasHandlers():  # Remove existing handlers and avoid duplicates
         logger.handlers.clear()
 
-    stream_handler = logging.StreamHandler()   # terminal output
+    stream_handler = logging.StreamHandler()  # terminal output
     stream_handler.setLevel(logging.INFO)
 
-    file_handler = logging.FileHandler(log_file, mode='a')   # FileHandler for log file
+    file_handler = logging.FileHandler(log_file, mode='a')  # FileHandler for log file
     file_handler.setLevel(logging.INFO)
 
-    formatter = logging.Formatter(f'%(name)s - %(levelname)s - %(message)s - {datetime.now().strftime("%d/%m %H:%M:%S")}')
+    formatter = logging.Formatter(
+        f'%(name)s - %(levelname)s - %(message)s - {datetime.now().strftime("%d/%m %H:%M:%S")}')
     stream_handler.setFormatter(formatter)
     file_handler.setFormatter(formatter)
 
@@ -66,13 +67,23 @@ def get_logger(setup_logger):
 
 
 @pytest.fixture(scope="session")
-def login_payload():
-    yield read_file("user_login.json")
+def company_payload():
+    yield read_file("create_company.json")
 
 
 @pytest.fixture(scope="session")
-def company_payload():
-    yield read_file("create_company.json")
+def verify_user():
+    yield read_file("verify_user.json")
+
+
+@pytest.fixture(scope="session")
+def admin_payload():
+    yield read_file("admin_login.json")
+
+
+@pytest.fixture(scope="session")
+def login_payload():
+    yield read_file("user_login.json")
 
 
 @pytest.fixture(scope="session")
