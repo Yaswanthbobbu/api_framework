@@ -12,13 +12,11 @@ class RegisterCompany(BaseClient):
 
     def register_company(self, company_payload):
         url = base_url + register_company_endpoint
-        return requests.post(
-            url, json.dumps(company_payload), self.headers, verify=False)
+        return requests.post(url, json.dumps(company_payload), self.headers, verify=False)
 
     def verify_user(self, verify_user):
         url = base_url + verify_user_endpoint
-        return requests.post(
-            url, json.dumps(verify_user), self.headers, verify=False)
+        return requests.post(url, json.dumps(verify_user), self.headers, verify=False)
 
     def admin_login(self, admin_payload):
         url = base_url + login_endpoint
@@ -27,33 +25,20 @@ class RegisterCompany(BaseClient):
     def create_user(self, create_user_payload):
         url = base_url + create_user_endpoint
         headers = self.headers_with_token()
-        return requests.post(
-            url, json.dumps(create_user_payload), headers=headers, verify=False)
+        return requests.post(url, json.dumps(create_user_payload), headers=headers, verify=False)
 
     def user_login(self, login_payload):
         url = base_url + login_endpoint
-        try:
-            response = requests.post(url, json.dumps(login_payload), self.headers, verify=False)
-            response_json = response.json()
-        except requests.exceptions.JSONDecodeError:
-            response_json = {"error": "Invalid JSON response", "text": response.text}
-        return response, response_json
+        return requests.post(url, json.dumps(login_payload), self.headers, verify=False)
 
     def change_user_password(self, change_password, admin: bool, user_id: str = None):
         url = f"{base_url + change_user_password_endpoint}/{admin}"
         headers = self.headers_with_token()
-        change_password['admin'] = admin
-        try:
-            response = requests.patch(url, json.dumps(change_password), headers=headers, verify=False)
-            response_json = response.json()
-        except requests.exceptions.JSONDecodeError:
-            response_json = {"error": "Invalid JSON response", "text": response.text}
-        return response, response_json
+        return requests.patch(url, json.dumps(change_password), headers=headers, verify=False)
 
     def change_user_email(self, change_email, admin: bool, user_id: str = None):
         url = f"{base_url + change_user_email_endpoint}/{admin}"
         headers = self.headers_with_token()
-        change_email['admin'] = admin
         try:
             response = requests.patch(url, json.dumps(change_email), headers=headers, verify=False)
             response_json = response.json()

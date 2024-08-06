@@ -78,7 +78,7 @@ def test_if_user_can_login(context, login_payload, get_logger):
 def test_if_admin_can_change_user_password(context, change_password, user_id, get_logger):
     logger = get_logger
     logger.info('Test: Admin Changes user password starts')
-    response, response_json = company.change_user_password(change_password, admin=True, user_id=user_id)
+    response = company.change_user_password(change_password, admin=True, user_id=user_id)
     with soft_assertions():
         assert_that(response.status_code).is_equal_to(200)
         assert_that(response.json()).is_equal_to({'details': 'Success'})
@@ -92,7 +92,7 @@ def test_if_admin_can_change_user_password(context, change_password, user_id, ge
 def test_if_user_change_password(context, change_password, get_logger):
     logger = get_logger
     logger.info('Test: Change user password starts')
-    response, response_json = company.change_user_password(change_password, admin=False)
+    response = company.change_user_password(change_password, admin=False)
     with soft_assertions():
         assert_that(response.status_code).is_equal_to(200)
         assert_that(response.json()).is_equal_to({'details': 'Success'})
@@ -109,8 +109,8 @@ def test_if_admin_can_change_user_email(context, change_email, user_id, get_logg
     response, response_json = company.change_user_email(change_email, admin=True, user_id=user_id)
     with soft_assertions():
         assert_that(response.status_code).is_equal_to(200)
-        assert_that(response.json()).is_equal_to({'details': 'Success'})
-        logger.info(response.json())
+        assert_that(response_json).is_equal_to({'details': 'Success'})
+        logger.info(response_json)
         if response.status_code == 200:
             logger.info('Admin Change user Email test passed')
         else:
@@ -123,8 +123,8 @@ def test_if_user_change_email(context, change_email, get_logger):
     response, response_json = company.change_user_email(change_email, admin=False)
     with soft_assertions():
         assert_that(response.status_code).is_equal_to(200)
-        assert_that(response.json()).is_equal_to({'details': 'Success'})
-        logger.info(response.json())
+        assert_that(response_json).is_equal_to({'details': 'Success'})
+        logger.info(response_json)
         if response.status_code == 200:
             logger.info('Change user Email test passed')
         else:
