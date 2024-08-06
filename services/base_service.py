@@ -2,7 +2,7 @@ import os
 import requests
 from config import *
 from dotenv import load_dotenv, find_dotenv
-
+from dataclasses import dataclass
 load_dotenv(find_dotenv())
 
 
@@ -68,3 +68,23 @@ class BaseClient:
         # expiresIn = token.split(';')[3]
         currUser = token.split(';')[4]
         return f"{access_token}", currUser, refresh_token
+
+
+@dataclass
+class APIResponse:
+    status_code: int
+    text: str
+    content: dict
+    headers: dict
+
+    @staticmethod
+    def get_responses(response):
+        status_code = response.status_code
+        text = response.text
+        try:
+            as_dict = response.json()
+        except ValueError:
+            as_dict = {}
+        headers = response.headers
+        return APIResponse(status_code, text, as_dict, headers)
+
