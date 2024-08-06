@@ -25,3 +25,20 @@ api-framework-python/
 ├─ pytest.ini
 ├─ readme.md
 ├─ requirements.txt
+
+
+Test Execution 
+
+# Run tests via pytest (single threaded verbose)
+cd tests
+pytest -v test.sample.py
+
+# Run tests via pytest (print & verbose)
+cd tests
+pytest -s -v test.sample.py
+
+# Run tests in parallel
+pytest -n auto
+
+# Report results to report portal
+pytest -n auto ./tests --reports

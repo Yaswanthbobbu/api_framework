@@ -75,10 +75,10 @@ def test_if_user_can_login(context, login_payload, get_logger):
             logger.error('User login test failed')
 
 
-def test_if_admin_can_change_user_password(context, user_id, change_password, get_logger):
+def test_if_admin_can_change_user_password(context, change_password, user_id, get_logger):
     logger = get_logger
     logger.info('Test: Admin Changes user password starts')
-    response = company.change_user_password(user_id, change_password)
+    response, response_json = company.change_user_password(change_password, admin=True, user_id=user_id)
     with soft_assertions():
         assert_that(response.status_code).is_equal_to(200)
         assert_that(response.json()).is_equal_to({'details': 'Success'})
@@ -92,7 +92,7 @@ def test_if_admin_can_change_user_password(context, user_id, change_password, ge
 def test_if_user_change_password(context, change_password, get_logger):
     logger = get_logger
     logger.info('Test: Change user password starts')
-    response, response_json = company.change_user_password(change_password)
+    response, response_json = company.change_user_password(change_password, admin=False)
     with soft_assertions():
         assert_that(response.status_code).is_equal_to(200)
         assert_that(response.json()).is_equal_to({'details': 'Success'})
@@ -103,10 +103,10 @@ def test_if_user_change_password(context, change_password, get_logger):
             logger.error('Change user password test failed')
 
 
-def test_if_admin_can_change_user_email(context, user_id, change_email, get_logger):
+def test_if_admin_can_change_user_email(context, change_email, user_id, get_logger):
     logger = get_logger
     logger.info('Test: Admin Change user Email starts')
-    response = company.change_user_password(user_id, change_email)
+    response, response_json = company.change_user_email(change_email, admin=True, user_id=user_id)
     with soft_assertions():
         assert_that(response.status_code).is_equal_to(200)
         assert_that(response.json()).is_equal_to({'details': 'Success'})
@@ -120,7 +120,7 @@ def test_if_admin_can_change_user_email(context, user_id, change_email, get_logg
 def test_if_user_change_email(context, change_email, get_logger):
     logger = get_logger
     logger.info('Test: Change user Email starts')
-    response = company.change_user_password(change_email)
+    response, response_json = company.change_user_email(change_email, admin=False)
     with soft_assertions():
         assert_that(response.status_code).is_equal_to(200)
         assert_that(response.json()).is_equal_to({'details': 'Success'})
@@ -152,6 +152,7 @@ def test_if_user_can_logout(get_logger):
         logger = get_logger
         assert_that(response.status_code).is_equal_to(200)
         assert_that(response.json()).is_equal_to({'details': 'Success'})
+        logger.info(response.json())
         if response.status_code == 200:
             logger.info('User logged out test passed')
         else:
@@ -165,13 +166,14 @@ def test_admin_can_force_logout_user(context, user_id, get_logger):
     with soft_assertions():
         assert_that(response.status_code).is_equal_to(200)
         assert_that(response.json()).is_equal_to({'details': 'Success'})
+        logger.info(response.json())
         if response.status_code == 200:
             logger.info('Admin can force logout user test passed')
         else:
             logger.error('Admin can force logout user failed')
 
 
-@pytest.mark.skip(reason='detail not found issue')
+@pytest.mark.skip(reason={'detail': 'Not Found'})
 def test_if_admin_can_delete_user(context, user_id, get_logger):
     logger = get_logger
     logger.info('Test: Delete user starts')
@@ -179,6 +181,7 @@ def test_if_admin_can_delete_user(context, user_id, get_logger):
     with soft_assertions():
         assert_that(response.status_code).is_equal_to(200)
         assert_that(response.json()).is_equal_to({'details': 'Success'})
+        logger.info(response.json())
         if response.status_code == 200:
             logger.info('Delete user test passed')
         else:

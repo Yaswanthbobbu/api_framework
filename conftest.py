@@ -122,5 +122,10 @@ def change_email():
 
 
 @pytest.fixture(scope="session")
+def user_mail():
+    yield read_file("user_mail.json")
+
+
+@pytest.fixture(scope="session")
 def user_id():
-    yield read_file("email.json")
+    yield read_file("user_id.json")

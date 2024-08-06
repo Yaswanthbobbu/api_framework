@@ -4,9 +4,6 @@ from config import *
 from services.base_service import BaseClient
 
 
-# from utils.service_requests import APIRequest
-
-
 class RegisterCompany(BaseClient):
     def __init__(self):
         super().__init__()
@@ -43,27 +40,26 @@ class RegisterCompany(BaseClient):
         return response, response_json
 
     def change_user_password(self, change_password, admin: bool, user_id: str = None):
-        if admin:
-            url = f"{base_url + change_user_password_endpoint}/{user_id}"
-        else:
-            url = f"{base_url + change_user_password_endpoint}"
+        url = f"{base_url + change_user_password_endpoint}/{admin}"
         headers = self.headers_with_token()
-        payload = change_password
-        payload['admin'] = admin
-        response = requests.patch(url, json.dumps(payload), headers=headers, verify=False)
+        change_password['admin'] = admin
         try:
+            response = requests.patch(url, json.dumps(change_password), headers=headers, verify=False)
             response_json = response.json()
         except requests.exceptions.JSONDecodeError:
             response_json = {"error": "Invalid JSON response", "text": response.text}
         return response, response_json
 
-    def change_user_email(self, user_id: None, change_email):
-        if user_id:
-            url = f"{base_url + change_user_email_endpoint}/{user_id}"
-        else:
-            url = f"{base_url + change_user_email_endpoint}"
+    def change_user_email(self, change_email, admin: bool, user_id: str = None):
+        url = f"{base_url + change_user_email_endpoint}/{admin}"
         headers = self.headers_with_token()
-        return requests.patch(url, json.dumps(change_email), headers=headers, verify=False)
+        change_email['admin'] = admin
+        try:
+            response = requests.patch(url, json.dumps(change_email), headers=headers, verify=False)
+            response_json = response.json()
+        except requests.exceptions.JSONDecodeError:
+            response_json = {"error": "Invalid JSON response", "text": response.text}
+        return response, response_json
 
     def refresh_access_token(self):
         url = base_url + refresh_access_token_endpoint
