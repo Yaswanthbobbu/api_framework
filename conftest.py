@@ -12,28 +12,11 @@ def context():
     return {}
 
 
-# class ReverseFileHandler(logging.FileHandler):
-#     def emit(self, record):
-#         log_entry = self.format(record)
-#         log_file_path = self.baseFilename
-#
-#         # read contents of log file
-#         if os.path.exists(log_file_path):
-#             with open(log_file_path, 'r') as f:
-#                 existing_content = f.read()
-#         else:
-#             existing_content = ""
-#
-#         # new log entry + existing content
-#         with open(log_file_path, 'w') as f:
-#             f.write(log_entry + '\n' + existing_content)
-
-
 @pytest.fixture(scope="session")
 def setup_logger():
     log_folder = os.path.abspath("../logs")
     os.makedirs(log_folder, exist_ok=True)
-    log_file = os.path.join(log_folder, "api_testing.log")
+    log_file = os.path.join(log_folder, datetime.now().strftime("%d%m") + " - api_testing.log")
 
     logger = logging.getLogger("API_Testing")
     logger.setLevel(logging.INFO)
@@ -48,7 +31,7 @@ def setup_logger():
     file_handler.setLevel(logging.INFO)
 
     formatter = logging.Formatter(
-        f'%(name)s - %(levelname)s - %(message)s - {datetime.now().strftime("%d/%m %H:%M:%S")}')
+        f'%(name)s - %(levelname)s - %(message)s - {datetime.now().strftime("%d%m %H:%M:%S")}')
     stream_handler.setFormatter(formatter)
     file_handler.setFormatter(formatter)
 
