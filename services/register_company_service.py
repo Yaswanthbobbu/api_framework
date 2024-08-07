@@ -36,13 +36,13 @@ class RegisterCompany(BaseClient):
         response = requests.post(url, json.dumps(login_payload), self.headers, verify=False)
         return self.response.get_responses(response)
 
-    def change_user_password(self, change_password, admin: bool, user_id: str = None):
+    def change_user_password(self, change_password, admin: bool):
         url = f"{base_url + change_user_password_endpoint}/{admin}"
         headers = self.headers_with_token()
         response = requests.patch(url, json.dumps(change_password), headers=headers, verify=False)
         return self.response.get_responses(response)
 
-    def change_user_email(self, change_email, admin: bool, user_id: str = None):
+    def change_user_email(self, change_email, admin: bool):
         url = f"{base_url + change_user_email_endpoint}/{admin}"
         headers = self.headers_with_token()
         try:
