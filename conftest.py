@@ -112,3 +112,21 @@ def user_mail():
 @pytest.fixture(scope="session")
 def user_id():
     yield read_file("user_id.json")
+
+
+@pytest.fixture(scope="session")
+def file_path():
+    file_name = "test_upload_file.txt"
+    files = os.path.abspath("files")
+    os.makedirs(files, exist_ok=True)
+    file_path = os.path.join(files, file_name)
+    with open(file_path, 'w') as f:
+        f.write("{'client_id' : '66b4c93941cda67aca2c4604'}")
+    # assert file_path.read() == '{client_id : '66b4c93941cda67aca2c4604'}'
+    return file_path
+
+
+@pytest.fixture(scope="session")
+def fetch_client_files():
+    yield read_file("client_id.json")
+
